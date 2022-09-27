@@ -1,0 +1,37 @@
+body {
+    background-image: url("Pictures/aboutBackground.jpg");
+    /*background-color: #cccccc;*/
+    background-position: center;
+    
+    background-size: cover;
+}
+
+nav a{
+    font-size: 1.5em;
+}
+
+header{
+
+    color: lightcoral;
+}
+
+#profilePic {
+    width: 10%;
+    height: auto;
+}
+
+.titles{
+    font-weight: bold;
+    font-size: larger;
+
+}
+
+.left{
+    float: left ;
+    width: 50% ;
+}
+
+.right{
+    float: right ;
+    width: 50% ;
+}
