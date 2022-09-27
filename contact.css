@@ -1,0 +1,52 @@
+body {
+    background-image: url("Pictures/contactBackground.jpg");
+    /*background-color: #cccccc;*/
+    background-position: center;
+    background-size: cover;
+
+}
+
+header{
+    display: flex ;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    color: rgb(25, 183, 236);
+}
+
+article{
+    display: flex ;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+nav a{
+    font-size: 1.5em;
+}
+
+
+
+
+#phoneContent{
+    display: flex ;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+
+.titles{
+    font-weight: bold;
+    font-size: larger;
+
+    display: flex ;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+

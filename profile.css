@@ -1,0 +1,76 @@
+body {
+    background-image: url("Pictures/backgroundPic.jpg");
+    /*background-color: #cccccc;*/
+    background-position: center;
+    
+    background-size: cover;
+
+}
+
+nav a{
+    font-size: 1.5em;
+}
+
+header{
+    color: rgb(223, 170, 22);
+}
+
+header p{
+    font-size: large;
+}
+
+
+article{
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+figure{
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+figure #bbdPic {
+    width: 20%;
+    height: auto;
+
+}    
+
+.titles{
+    font-weight: bold;
+    font-size: larger;
+
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#detailButtonSection{
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#detailButton{
+    width: 10em ;
+    height: 10em;
+
+    font-family: "Arial";
+    font-size: larger;
+    font-weight: bold;
+    
+    background-color: rgb(223, 170, 22);
+    border-radius: 10em ;
+    border: 0.1em solid rgb(236, 130, 10);
+}
+
