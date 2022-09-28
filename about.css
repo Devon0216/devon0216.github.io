@@ -1,25 +1,101 @@
+/*whole body*/
 body {
     background-image: url("Pictures/aboutBackground.jpg");
     /*background-color: #cccccc;*/
     background-position: center;
     
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
+
+/*navigation*/
 nav a{
     font-size: 1.5em;
+    text-decoration: none;
+    color: #fff;
 }
 
+.logo{
+    font-size: xx-large;
+}
+
+.navPages{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: rgb(41, 117, 179);
+    color: #fff;
+}
+
+.menu{
+    display: flex;
+    gap: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li{
+    list-style: none;
+    padding: 1em 1em;
+}
+
+.menu li:hover {
+    background-color: rgb(41, 117, 179);
+    border-radius: 1em;
+    transition: 0.3s ease;
+}
+
+/*responsive navigation*/
+input[type=checkbox]{
+    display: none;
+} 
+/*HAMBURGER MENU*/
+.hamburger {
+    display: none;
+    font-size: 1em;
+    user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+.menu { 
+    display:none;
+    position: absolute;
+    background-color:rgb(41, 117, 179);
+    top: 5.5em ;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+.menu li:hover {
+    display: inline-block;
+    background-color:rgb(41, 117, 179);
+    transition: 0.3s ease;
+}
+.menu li + li {
+    margin-top: 1em;
+}
+input[type=checkbox]:checked ~ .menu{
+    display: block;
+}
+.hamburger {
+    display: block;
+}
+}
+
+/*header*/
 header{
 
     color: lightcoral;
 }
 
-#profilePic {
-    width: 10%;
-    height: auto;
-}
 
+
+/*actual content*/
 .titles{
     font-weight: bold;
     font-size: larger;
@@ -34,4 +110,10 @@ header{
 .right{
     float: right ;
     width: 50% ;
+}
+
+/*picture*/
+#profilePic {
+    width: 10%;
+    height: auto;
 }

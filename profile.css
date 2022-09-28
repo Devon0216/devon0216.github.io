@@ -1,25 +1,96 @@
+/*whole body*/
 body {
     background-image: url("Pictures/backgroundPic.jpg");
     /*background-color: #cccccc;*/
     background-position: center;
-    
     background-size: cover;
 
+    margin: 0;
+    padding: 0;
 }
 
+
+/*navigation*/
 nav a{
     font-size: 1.5em;
+    text-decoration: none;
+    color: #fff;
 }
 
-header{
-    color: rgb(223, 170, 22);
+.logo{
+    font-size: xx-large;
 }
 
-header p{
-    font-size: large;
+.navPages{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: rgb(41, 117, 179);
+    color: #fff;
 }
 
+.menu{
+    display: flex;
+    gap: 1em;
+}
 
+nav ul {
+    list-style-type: none;
+}
+
+nav li{
+    list-style: none;
+    padding: 1em 1em;
+}
+
+.menu li:hover {
+    background-color: rgb(41, 117, 179);
+    border-radius: 1em;
+    transition: 0.3s ease;
+}
+
+/*responsive navigation*/
+input[type=checkbox]{
+    display: none;
+} 
+/*HAMBURGER MENU*/
+.hamburger {
+    display: none;
+    font-size: 1em;
+    user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+.menu { 
+    display:none;
+    position: absolute;
+    background-color:rgb(41, 117, 179);
+    top: 5.5em ;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+.menu li:hover {
+    display: inline-block;
+    background-color:rgb(41, 117, 179);
+    transition: 0.3s ease;
+}
+.menu li + li {
+    margin-top: 1em;
+}
+input[type=checkbox]:checked ~ .menu{
+    display: block;
+}
+.hamburger {
+    display: block;
+}
+}
+    
+
+
+
+/*actual content*/
 article{
     display: flex ;
     flex-direction: column;
@@ -27,7 +98,17 @@ article{
     
 }
 
+.titles{
+    font-weight: bold;
+    font-size: larger;
 
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*picture*/
 figure{
     display: flex ;
     flex-direction: column;
@@ -42,18 +123,9 @@ figure #bbdPic {
 
 }    
 
-.titles{
-    font-weight: bold;
-    font-size: larger;
-
-    display: flex ;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 
-
+/*button to about page*/
 #detailButtonSection{
     display: flex ;
     flex-direction: column;
@@ -69,8 +141,8 @@ figure #bbdPic {
     font-size: larger;
     font-weight: bold;
     
-    background-color: rgb(223, 170, 22);
+    background-color: rgb(41, 117, 179);
     border-radius: 10em ;
-    border: 0.1em solid rgb(236, 130, 10);
+    border: 0.1em solid rgb(41, 85, 179);
 }
 
