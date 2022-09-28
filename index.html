@@ -11,27 +11,31 @@
 <body>
 
     <main>
+
         <nav class="navPages" name="navigation">
-            <a href="profile.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <section class="logo">Devon <br>Profile HomePage</section>
+
+            <ul>
+                <input type="checkbox" id="checkbox_toggle" />
+                <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+                <section class="menu">
+                    <li><a href="profile.html">Home</a></li>
+                    <li><a href="about.html">About</a></li> 
+                    <li><a href="gallery.html">Gallery</a></li>  
+                    <li><a href="contact.html">Contact</a></li>
+                </section>  
+            </ul>
+            
         </nav>
 
-        <header>
-            <h1>
-                Profile HomePage
-            </h1>
-        </header>
 
-        <figure>
-                    
+        <figure>        
             <img id="bbdPic" src="Pictures/bbd.png"  alt="BBD Picture">
-        
         </figure>
+
 
         <article>
             
-
             <section class="name">
                 <p class="titles">Name:</p>
                 <p>
@@ -71,6 +75,7 @@
 
 
         </article>
+
 
         <section id="detailButtonSection">
             <a href="about.html" target="_blank"> <button id="detailButton">Click for More Details</button> </a>
