@@ -1,0 +1,164 @@
+/*overall setting*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Raleway;
+    background-color: #1684dd8a;
+}
+
+/*images*/
+.gallery-image {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery-image img {
+    height: 250px;
+    width: 350px;
+    transform: scale(1.0);
+    transition: transform 0.4s ease;
+}
+
+.img-box {
+    box-sizing: content-box;
+    margin: 10px;
+    height: 250px;
+    width: 350px;
+    overflow: hidden;
+    display: inline-block;
+    color: white;
+    position: relative;
+}
+/*image caption*/
+.caption {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    opacity: 0.0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.transparent-box {
+    height: 250px;
+    width: 350px;
+    background-color:rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease;
+}
+
+/*image hover effect*/
+.img-box:hover img { 
+    transform: scale(1.1);
+}
+
+.img-box:hover .transparent-box {
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.img-box:hover .caption {
+    transform: translateY(-1em);
+    opacity: 1.0;
+}
+
+.img-box:hover {
+    cursor: pointer;
+}
+
+.opacity-low {
+    opacity: 0.5;
+    font-size: 0.8em;
+}
+
+
+
+
+
+
+
+
+
+/*navigation*/
+nav a{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo{
+    font-size: xx-large;
+}
+
+.navPages{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: rgb(41, 117, 179);
+    color: #fff;
+}
+
+.menu{
+    display: flex;
+    gap: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li{
+    list-style: none;
+    padding: 1em 1em;
+}
+
+.menu li:hover {
+    background-color: rgb(41, 117, 179);
+    border-radius: 1em;
+    transition: 0.3s ease;
+}
+
+/*responsive navigation*/
+input[type=checkbox]{
+    display: none;
+} 
+/*HAMBURGER MENU*/
+.hamburger {
+    display: none;
+    font-size: 1em;
+    user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+.menu { 
+    display:none;
+    position: absolute;
+    background-color:rgb(41, 117, 179);
+    top: 5.5em ;
+    right: 0;
+    left: 0;
+    text-align: center;
+    z-index: 1;
+}
+.menu li:hover {
+    display: inline-block;
+    background-color:rgb(41, 117, 179);
+    transition: 0.3s ease;
+}
+.menu li + li {
+    margin-top: 1em;
+}
+input[type=checkbox]:checked ~ .menu{
+    display: block;
+}
+.hamburger {
+    display: block;
+}
+}
