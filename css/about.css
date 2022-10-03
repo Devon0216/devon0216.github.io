@@ -3,8 +3,8 @@ body {
     background-image: url("../Pictures/aboutBackground.jpg");
     /*background-color: #cccccc;*/
     background-position: center;
-    
     background-size: cover;
+    
     margin: 0;
     padding: 0;
 }
@@ -91,23 +91,28 @@ input[type=checkbox]:checked ~ .menu{
 header{
 
     color: lightcoral;
+    padding: 2em ;
 }
 
 
 
 /*actual content*/
+.content{
+    padding: 2em ;
+}
+
 .titles{
     font-weight: bold;
     font-size: larger;
 
 }
 
-.left{
+#left{
     float: left ;
     width: 50% ;
 }
 
-.right{
+#right{
     float: right ;
     width: 50% ;
 }
@@ -116,4 +121,21 @@ header{
 #profilePic {
     width: 10%;
     height: auto;
+    padding: 2em ;
+}
+
+#education{
+    padding: 2em ;
+}
+
+#major{
+    padding: 2em ;
+}
+
+#goal{
+    padding: 2em ;
+}
+
+#hobby{
+    padding: 2em ;
 }

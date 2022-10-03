@@ -1,0 +1,190 @@
+/*body*/
+body {
+    
+    /*background-color: #cccccc;*/
+    background-position: center;
+    background-size: cover;
+
+    margin: 0;
+    padding: 0;
+}
+
+/*navigation*/
+nav a{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo{
+    font-size: xx-large;
+}
+
+.navPages{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: rgb(41, 117, 179);
+    color: #fff;
+}
+
+.menu{
+    display: flex;
+    gap: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li{
+    list-style: none;
+    padding: 1em 1em;
+}
+
+.menu li:hover {
+    background-color: rgb(41, 117, 179);
+    border-radius: 1em;
+    transition: 0.3s ease;
+}
+
+/*responsive navigation*/
+input[type=checkbox]{
+    display: none;
+} 
+/*HAMBURGER MENU*/
+.hamburger {
+    display: none;
+    font-size: 1em;
+    user-select: none;
+}
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+.menu { 
+    display:none;
+    position: absolute;
+    background-color:rgb(41, 117, 179);
+    top: 5.5em ;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+.menu li:hover {
+    display: inline-block;
+    background-color:rgb(41, 117, 179);
+    transition: 0.3s ease;
+}
+.menu li + li {
+    margin-top: 1em;
+}
+input[type=checkbox]:checked ~ .menu{
+    display: block;
+}
+.hamburger {
+    display: block;
+}
+}
+
+/*content container*/
+#content{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+
+    overflow-x:auto ;
+    
+    
+}
+
+
+/*button*/
+#buttonContainer{
+    display: flex ;
+    align-items: center;
+    justify-content: center ;
+    margin-top: 1em;
+    
+}
+
+.covid-button {
+    width: 10%;
+    height: auto;
+    padding: 0.5em;
+    border: 0.5em solid #007bff;
+    background-color: #007bff;
+    border-radius: 1em;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    outline: none;
+}
+
+.covid-button:hover {
+    background-color: #0069d9;
+    border-color: #0069d9;
+    cursor: pointer;
+}
+
+
+/*loading*/
+#loading {
+    display: flex ;
+    align-items: center;
+    justify-content: center ;
+}
+
+
+/*covid content table*/
+#covid-stats th, td{
+    padding: 1em ;
+}
+
+#tableContainer{
+    overflow-x:auto
+}
+
+
+
+/*drop down menu*/
+#contentContainer{
+    /*display: flex ;
+    align-items: center;*/
+    display:block;
+    /*justify-content: flex-start;*/
+    
+}
+
+#selectLabel{
+    font-size: x-large;
+}
+
+#country-stats{
+    font-size: x-large;
+}
+
+
+
+/*responsiveness*/
+@media all and (max-width: 600px){
+    select {
+       width: 80%; max-width: 100%;
+       margin-left: 0.5em;
+    }
+
+    .covid-button {
+        width: 50%;
+        height: auto;
+        padding: 0.5em;
+        border: 0.5em solid #007bff;
+        background-color: #007bff;
+        border-radius: 1em;
+        color: white;
+        text-align: center;
+        font-size: 1em;
+        outline: none;
+    }
+
+    
+  }
