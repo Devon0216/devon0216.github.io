@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Stats</title>
+
+    <link rel="stylesheet" href="../css/covid.css">
+</head>
+<body>
+
+    <main>
+        <nav class="navPages" name="navigation">
+            <section class="logo"><p>Devon</p> <p>Covid Statistics</p></section>
+    
+            <ul>
+                <input type="checkbox" id="checkbox_toggle" />
+                <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+                <section class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li> 
+                    <li><a href="gallery.html">Gallery</a></li>  
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="covid.html">Covid</a></li>
+                </section>  
+            </ul>
+            
+        </nav>
+
+        <!--content-->
+        <article id="content">
+            <!--drop down menu-->
+            <section id="selectContainer">
+                <label id="selectLabel" for="country-stats">Please select a country to see its covid statistics:</label>
+                <select name="country-stats" id="country-stats">
+                    <option value="global" selected>Global</option>
+                    <option value="all">Show All countries</option>
+                    
+                </select>
+            </section>
+
+            
+
+        </article>
+
+        <!--button-->
+        <section id="buttonContainer">
+            <button class="covid-button" onclick="onCovidButtonClick()">Click to see Covid stats</button>
+        </section>
+
+        <!--loading-->
+        <section class="d-flex justify-content-center">
+            <p class="sr-only" id="loading">Loading...</p>
+        </section>
+
+        <article>
+        
+            <!-- table for showing data -->
+            <section id="tableContainer">
+                <table id="covid-stats">
+
+                </table>
+            </section>
+        </article>
+        
+    
+        
+        
+        
+    </main>
+    
+
+
+
+
+
+
+
+
+    <script src="../js/covid.js"></script>
+</body>
+</html>
