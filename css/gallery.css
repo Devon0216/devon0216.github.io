@@ -1,18 +1,13 @@
-/*overall setting*/
-* {
-    box-sizing: border-box;
+/*whole body*/
+body {
+    background-color: #1684dd8a;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Raleway;
-    background-color: #1684dd8a;
-}
-
 /*images*/
 .gallery-image {
-    padding: 20px;
+    padding: 1em;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -27,7 +22,7 @@ body {
 
 .img-box {
     box-sizing: content-box;
-    margin: 10px;
+    margin: 0.8em;
     height: 250px;
     width: 350px;
     overflow: hidden;
@@ -92,11 +87,11 @@ nav a{
     color: #fff;
 }
 
-.logo{
-    font-size: xx-large;
+#logo{
+    font-size: 2em;
 }
 
-.navPages{
+#navPages{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,22 +100,23 @@ nav a{
     color: #fff;
 }
 
-.menu{
+#menu{
     display: flex;
     gap: 1em;
 }
 
+/*
 nav ul {
     list-style-type: none;
-}
+}*/
 
 nav li{
     list-style: none;
     padding: 1em 1em;
 }
 
-.menu li:hover {
-    background-color: rgb(41, 117, 179);
+#menu li:hover {
+    background-color: rgb(17, 132, 226);
     border-radius: 1em;
     transition: 0.3s ease;
 }
@@ -130,14 +126,14 @@ input[type=checkbox]{
     display: none;
 } 
 /*HAMBURGER MENU*/
-.hamburger {
+#hamburger {
     display: none;
     font-size: 1em;
-    user-select: none;
+    
 }
 /* APPLYING MEDIA QUERIES */
-@media (max-width: 768px) {
-.menu { 
+@media (max-width: 900px) {
+#menu { 
     display:none;
     position: absolute;
     background-color:rgb(41, 117, 179);
@@ -147,18 +143,42 @@ input[type=checkbox]{
     text-align: center;
     z-index: 1;
 }
-.menu li:hover {
-    display: inline-block;
+#menu li:hover {
+    
     background-color:rgb(41, 117, 179);
-    transition: 0.3s ease;
+    
 }
-.menu li + li {
+#menu li + li {
     margin-top: 1em;
 }
-input[type=checkbox]:checked ~ .menu{
+input[type=checkbox]:checked ~ #menu{
     display: block;
 }
-.hamburger {
+#hamburger {
     display: block;
 }
+}
+
+
+
+
+@media
+only screen and (max-width: 1500px) {
+    article {
+        font-size: 1.75em ;
+    }
+}
+
+@media
+only screen and (max-width: 1000px) {
+    article {
+        font-size: 1.25em ;
+    }
+}
+
+@media
+only screen and (max-width: 500px) {
+    article {
+        font-size: 1em ;
+    }
 }
