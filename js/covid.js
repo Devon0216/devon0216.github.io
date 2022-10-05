@@ -1,258 +1,228 @@
-const api_url = "https://api.covid19api.com/summary";
+/*declare necessary variables*/
+const API_URL = "https://api.covid19api.com/summary";
+var data = undefined ;
+var input = undefined ;
 
-const onCovidButtonClick = () => {
-    document.getElementById('loading').style.display = 'inline';
-    
-    // Calling that async function
-    getapi(api_url);
-};
+var CovidData = {
+  ID: undefined,
+  Message: undefined,
+  Global: undefined,
+  Countries: undefined,
+  Date: undefined
+}
 
-
-// Defining async function
-async function getapi(url) {
-	
-	// Storing response
-	const response = await fetch(url);
-	
-	// Storing data in form of JSON
-	var data = await response.json();
-
-	console.log(data);
-	if (response) {
-		hideloader();
-	}
-
-    //show data according to the need
-    if ( document.getElementById('country-stats').value === 'global' ){
-        showGlobal(data);
-    }
-    else if ( document.getElementById('country-stats').value === 'all' ){
-        show(data) ;
-    }
-    else if ( (document.getElementById('country-stats').value != 'all') || (document.getElementById('country-stats').value != 'global') ){
-        showOneCountry(data, document.getElementById('country-stats').value) ;
-    }
+var Global = {
+  NewConfirmed: undefined,
+  TotalConfirmed: undefined,
+  NewDeaths: undefined,
+  TotalDeaths: undefined,
+  NewRecovered: undefined,
+  TotalRecovered: undefined,
+  Date : undefined
 }
 
 
-// Function to hide the loader
+/*trigger select click*/
+function onCountrySelect () {
+    document.getElementById('loading').style.display = 'inline';
+    
+    hideloader();
+    input = document.getElementById('country-stats').value ;
+    show() ;
+}
+
+
+
+
+/*Function to hide the loader*/
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
 }
 
 
-// Function to create all countries names for drop down
+/*Function to create all countries names for drop down*/
 async function populateCountries() {
     // Storing response
-	const response = await fetch(api_url);
+    
+    var response = undefined ;
+    
+    try {
+        response = await fetch(API_URL);
+         // Storing data in form of JSON
+        data = await response.json();
+    } catch(err) {
+        alert(err); 
+        console.log(err) ;
+    }
 	
-	// Storing data in form of JSON
-	var data = await response.json();
-
-	console.log(data);
-	if (response) {
-		hideloader();
-	}
-
-	/*store data from api data*/
-    const covidData = {
-        ID: data.ID ,
-        Message: data.Message,
-        Global: data.Global,
-        Countries: data.Countries,
-        Date: data.Date
+	
+    if (response) {
+      hideloader();
     }
 
-    let tab = "" ;
-    
-    covidData.Countries.forEach((Element)=>{
-        tab += 
-            `<option value="${Element.Country}">${Element.Country}</option>`
-    })
+    console.log(data);
 
-	document.getElementById("country-stats").innerHTML += tab;
+	  //store data from api data
+    CovidData.ID = data.ID ;
+    CovidData.Message = data.Message ;
+    CovidData.Global = data.Global ;
+    CovidData.Countries = data.Countries ;
+    CovidData.Date = data.Date ;
+
+    Global.NewConfirmed = CovidData.Global.NewConfirmed ;
+    Global.TotalConfirmed = CovidData.Global.TotalConfirmed ;
+    Global.NewDeaths = CovidData.Global.NewDeaths ;
+    Global.TotalDeaths = CovidData.Global.TotalDeaths ;
+    Global.NewRecovered = CovidData.Global.NewRecovered ;
+    Global.TotalRecovered = CovidData.Global.TotalRecovered ;
+    Global.Date = CovidData.Global.Date ;
+
+    //populate options for the select drop down
+    select = document.getElementById('country-stats');
+    
+    CovidData.Countries.map(makeDropDownCountries) ;
+
 }
 populateCountries() ;
 
-
-// Function to define innerHTML for HTML table
-function show(data) {
-	let tab =
-		`<tr>
-		<th>Country</th>
-		<th>CountryCode</th>
-		<th>Slug</th>
-		<th>NewConfirmed</th>
-        <th>TotalConfirmed</th>
-        <th>NewDeaths</th>
-        <th>TotalDeaths</th>
-        <th>NewRecovered</th>
-        <th>TotalRecovered</th>
-        <th>Date</th>
-		</tr>`;
-	
-	/*store data from api data*/
-    const covidData = {
-        ID: data.ID ,
-        Message: data.Message,
-        Global: data.Global,
-        Countries: data.Countries,
-        Date: data.Date
-    }
-
-    /*get data for global*/
-    const Global = {
-        NewConfirmed: covidData.Global.NewConfirmed,
-        TotalConfirmed: covidData.Global.TotalConfirmed,
-        NewDeaths: covidData.Global.NewDeaths,
-        TotalDeaths: covidData.Global.TotalDeaths,
-        NewRecovered: covidData.Global.NewRecovered,
-        TotalRecovered: covidData.Global.TotalRecovered,
-        Date: covidData.Global.Date
-    }
-    tab += 
-        `<tr>
-        <td>Global</td>
-        <td></td>
-        <td></td>
-        <td>${Global.NewConfirmed} </td>
-        <td>${Global.TotalConfirmed}</td>
-        <td>${Global.NewDeaths}</td>	
-        <td>${Global.TotalDeaths}</td>
-        <td>${Global.NewRecovered}</td>
-        <td>${Global.TotalRecovered}</td>
-        <td>${Global.Date} </td>	
-        </tr>`;
-
-    
-    covidData.Countries.forEach((Element)=>{
-        tab += 
-            `<tr>
-            <td>${Element.Country} </td>
-            <td>${Element.CountryCode} </td>
-            <td>${Element.Slug} </td>
-            <td>${Element.NewConfirmed} </td>
-            <td>${Element.TotalConfirmed}</td>
-            <td>${Element.NewDeaths}</td>	
-            <td>${Element.TotalDeaths}</td>
-            <td>${Element.NewRecovered}</td>
-            <td>${Element.TotalRecovered}</td>
-            <td>${Element.Date} </td>	
-            </tr>`;
-    })
-
-	document.getElementById("covid-stats").innerHTML = tab;
+function makeDropDownCountries(element){
+    var option = document.createElement('option');
+    option.value = element.Country;
+    option.textContent = element.Country;
+    select.appendChild(option);
 }
 
 
 
-// Function to define innerHTML for HTML table
-function showGlobal(data) {
-	let tab =
-		`<tr>
-		<th>Country</th>
-		<th>CountryCode</th>
-		<th>Slug</th>
-		<th>NewConfirmed</th>
-        <th>TotalConfirmed</th>
-        <th>NewDeaths</th>
-        <th>TotalDeaths</th>
-        <th>NewRecovered</th>
-        <th>TotalRecovered</th>
-        <th>Date</th>
-		</tr>`;
-	
-	/*store data from api data*/
-    const covidData = {
-        ID: data.ID ,
-        Message: data.Message,
-        Global: data.Global,
-        Countries: data.Countries,
-        Date: data.Date
-    }
-
-    /*get data for global*/
-    const Global = {
-        NewConfirmed: covidData.Global.NewConfirmed,
-        TotalConfirmed: covidData.Global.TotalConfirmed,
-        NewDeaths: covidData.Global.NewDeaths,
-        TotalDeaths: covidData.Global.TotalDeaths,
-        NewRecovered: covidData.Global.NewRecovered,
-        TotalRecovered: covidData.Global.TotalRecovered,
-        Date: covidData.Global.Date
-    }
-    tab += 
-        `<tr>
-        <td>Global</td>
-        <td></td>
-        <td></td>
-        <td>${Global.NewConfirmed} </td>
-        <td>${Global.TotalConfirmed}</td>
-        <td>${Global.NewDeaths}</td>	
-        <td>${Global.TotalDeaths}</td>
-        <td>${Global.NewRecovered}</td>
-        <td>${Global.TotalRecovered}</td>
-        <td>${Global.Date} </td>	
-        </tr>`;
-
-	document.getElementById("covid-stats").innerHTML = tab;
-}
 
 
 
 // Function to define innerHTML for HTML table
-function showOneCountry(data, countryName) {
-    console.log(countryName) ;
-	let tab =
-		`<tr>
-		<th>Country</th>
-		<th>CountryCode</th>
-		<th>Slug</th>
-		<th>NewConfirmed</th>
-        <th>TotalConfirmed</th>
-        <th>NewDeaths</th>
-        <th>TotalDeaths</th>
-        <th>NewRecovered</th>
-        <th>TotalRecovered</th>
-        <th>Date</th>
-		</tr>`;
-	
-	/*store data from api data*/
-    const covidData = {
-        ID: data.ID ,
-        Message: data.Message,
-        Global: data.Global,
-        Countries: data.Countries,
-        Date: data.Date
-    }
+function show() {
 
+  if ( document.getElementById("covid-stats").innerHTML != ""){
+    document.getElementById("covid-stats").innerHTML = "";
+  }
+   
+  showHeader() ;  
+  if ( input == "global"){
+    showGlobal() ;
+  }
+  else if ( input != "all" && input != "global" ){
+    showCountry(input) ;
+  }
+  else if ( input == "all" ){
+    showAll() ;
+  }
 
-
-    /*get data for each country*/
-    const countryData = [] ;
-    
-    for(let i = 0; i < covidData.Countries.length; i++ ){
-        if ( covidData.Countries[i].Country === countryName){
-            tab += 
-            `<tr>
-            <td>${covidData.Countries[i].Country} </td>
-            <td>${covidData.Countries[i].CountryCode} </td>
-            <td>${covidData.Countries[i].Slug} </td>
-            <td>${covidData.Countries[i].NewConfirmed} </td>
-            <td>${covidData.Countries[i].TotalConfirmed}</td>
-            <td>${covidData.Countries[i].NewDeaths}</td>	
-            <td>${covidData.Countries[i].TotalDeaths}</td>
-            <td>${covidData.Countries[i].NewRecovered}</td>
-            <td>${covidData.Countries[i].TotalRecovered}</td>
-            <td>${covidData.Countries[i].Date} </td>	
-            </tr>`;
-            break ;
-        }//if 
-    }
-    
-
-	document.getElementById("covid-stats").innerHTML = tab;
 }
 
 
 
+/*function to create header row*/
+function showHeader(){
+  let header ={
+    Country : "Country",
+    CountryCode:"CountryCode",
+    Slug :"Slug",
+    NewConfirmed:"NewConfirmed",
+    TotalConfirmed:"TotalConfirmed",
+    NewDeaths:"NewDeaths",
+    TotalDeaths:"TotalDeaths",
+    NewRecovered:"NewRecovered",
+    TotalRecovered:"TotalRecovered",
+    Date:"Date"
+  } ;
+  showRow(header) ;
+}
+
+
+/*function to create global row*/
+function showGlobal(){
+  let tempGlobal ={
+    Country : "Global",
+    CountryCode:"",
+    Slug :"",
+    NewConfirmed: Global.NewConfirmed,
+    TotalConfirmed:Global.TotalConfirmed,
+    NewDeaths:Global.NewDeaths,
+    TotalDeaths:Global.TotalDeaths,
+    NewRecovered:Global.NewRecovered,
+    TotalRecovered:Global.TotalRecovered,
+    Date:Global.Date
+  } ;
+  showRow(tempGlobal) ;
+}
+
+
+/*function to create one country row*/
+function showCountry(input){
+  CovidData.Countries.find( isCountry ) ;
+}
+
+function isCountry(element){
+  if (element.Country == input){
+    showRow(element) ;
+  }
+}
+
+/*function to create all country rows*/
+function showAll(){
+  showGlobal() ;
+  CovidData.Countries.map(showRow) ;
+}
+
+
+
+/*function to generate data for one row based on given country*/
+function showRow(Element){
+    let tbody = document.createElement('tbody');
+
+    let CountryRow = document.createElement('tr');
+
+    let CountryName = document.createElement('td');
+    CountryName.textContent = Element.Country ;
+
+    let CountryCode = document.createElement('td');
+    CountryCode.textContent = Element.CountryCode;
+
+    let CountrySlug = document.createElement('td');
+    CountrySlug.textContent = Element.Slug ;
+
+    let CountryNewConfirmed = document.createElement('td');
+    CountryNewConfirmed.textContent = Element.NewConfirmed;
+
+    let CountryTotalConfirmed = document.createElement('td');
+    CountryTotalConfirmed.textContent = Element.TotalConfirmed;
+
+    let CountryNewDeaths = document.createElement('td');
+    CountryNewDeaths.textContent = Element.NewDeaths;
+
+    let CountryTotalDeaths = document.createElement('td');
+    CountryTotalDeaths.textContent = Element.TotalDeaths;
+
+    let CountryNewRecovered = document.createElement('td');
+    CountryNewRecovered.textContent = Element.NewRecovered;
+
+    let CountryTotalRecovered = document.createElement('td');
+    CountryTotalRecovered.textContent = Element.TotalRecovered;
+
+    let CountryDate = document.createElement('td');
+    CountryDate.textContent = Element.Date;
+    
+
+    CountryRow.appendChild(CountryName);
+    CountryRow.appendChild(CountryCode);
+    CountryRow.appendChild(CountrySlug);
+    CountryRow.appendChild(CountryNewConfirmed);
+    CountryRow.appendChild(CountryTotalConfirmed);
+    CountryRow.appendChild(CountryNewDeaths);
+    CountryRow.appendChild(CountryTotalDeaths);
+    CountryRow.appendChild(CountryNewRecovered);
+    CountryRow.appendChild(CountryTotalRecovered);
+    CountryRow.appendChild(CountryDate);
+    tbody.appendChild(CountryRow);
+
+    document.getElementById("covid-stats").appendChild(tbody) ;
+
+}
