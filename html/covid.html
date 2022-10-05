@@ -11,18 +11,19 @@
 <body>
 
     <main>
-        <nav class="navPages" name="navigation">
-            <section class="logo"><p>Devon</p> <p>Covid Statistics</p></section>
-    
+        <nav id="navPages" name="navigation">
+            <section id="logo"><p>Devon</p> <p>Covid-19 Statistics</p></section>
+
             <ul>
                 <input type="checkbox" id="checkbox_toggle" />
-                <label for="checkbox_toggle" class="hamburger">&#9776;</label>
-                <section class="menu">
+                <label for="checkbox_toggle" id="hamburger">&#9776;</label>
+                <section id="menu">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html">About</a></li> 
                     <li><a href="gallery.html">Gallery</a></li>  
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="covid.html">Covid</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
                 </section>  
             </ul>
             
@@ -33,21 +34,16 @@
             <!--drop down menu-->
             <section id="selectContainer">
                 <label id="selectLabel" for="country-stats">Please select a country to see its covid statistics:</label>
-                <select name="country-stats" id="country-stats">
+                <select name="country-stats" id="country-stats" onchange="onCountrySelect()">
+                    
                     <option value="global" selected>Global</option>
                     <option value="all">Show All countries</option>
                     
                 </select>
             </section>
 
-            
-
         </article>
 
-        <!--button-->
-        <section id="buttonContainer">
-            <button class="covid-button" onclick="onCovidButtonClick()">Click to see Covid stats</button>
-        </section>
 
         <!--loading-->
         <section class="d-flex justify-content-center">
@@ -55,19 +51,14 @@
         </section>
 
         <article>
-        
             <!-- table for showing data -->
             <section id="tableContainer">
                 <table id="covid-stats">
-
+                    
                 </table>
             </section>
         </article>
-        
-    
-        
-        
-        
+
     </main>
     
 

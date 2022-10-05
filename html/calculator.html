@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="../css/calculator.css">
+</head>
+<body>
+
+    <main>
+
+        <nav id="navPages" name="navigation">
+            <section id="logo"><p>Devon</p> <p>Calculator</p></section>
+
+            <ul>
+                <input type="checkbox" id="checkbox_toggle" />
+                <label for="checkbox_toggle" id="hamburger">&#9776;</label>
+                <section id="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li> 
+                    <li><a href="gallery.html">Gallery</a></li>  
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="covid.html">Covid</a></li>
+                    <li><a href="calculator.html">Calculator</a></li>
+                </section>  
+            </ul>
+            
+        </nav>
+
+        <section id="calculator">
+            <section id="displayContainer">
+                <p id="result">0</p>
+            </section>
+            <section id="keysContainer">
+                <section id="firstRow">
+                    <button class="keyButton" id="+" onclick="onAddButtonClick()"> + </button>
+                <button class="keyButton" id="-" onclick="onMinusButtonClick()"> - </button>
+                <button class="keyButton" id="*" onclick="onMultiplyButtonClick()"> x </button>
+                <button class="keyButton" id="/" onclick="onDivideButtonClick()"> / </button>
+                </section>
+                <section id="secondRow">
+                    <button class="keyButton" id="9" onclick="on9ButtonClick()"> 9 </button>
+                    <button class="keyButton" id="8" onclick="on8ButtonClick()"> 8 </button>
+                    <button class="keyButton" id="7" onclick="on7ButtonClick()"> 7 </button>
+                </section>
+                <section id="thirdRow">
+                    <button class="keyButton" id="6" onclick="on6ButtonClick()"> 6 </button>
+                    <button class="keyButton" id="5" onclick="on5ButtonClick()"> 5 </button>
+                    <button class="keyButton" id="4" onclick="on4ButtonClick()"> 4 </button>
+                </section>
+                <section id="fourthRow">
+                    <button class="keyButton" id="3" onclick="on3ButtonClick()"> 3 </button>
+                    <button class="keyButton" id="2" onclick="on2ButtonClick()"> 2 </button>
+                    <button class="keyButton" id="1" onclick="on1ButtonClick()"> 1 </button>
+                </section>
+
+                <section id="fifthRow">
+                    <button class="keyButton" id="0" onclick="on0ButtonClick()"> 0 </button>
+                    <button class="keyButton" id="." onclick="onDotButtonClick()"> . </button>
+                    <button class="keyButton" id="back" onclick="onBackButtonClick()"> <img src="../Pictures/backSpace.png" id="backPic"> </button>
+                </section>
+
+                <section id="sixthRow">
+                    <button class="keyButton" id="=" onclick="onEqualButtonClick()"> = </button>
+                    <button class="keyButton" id="clear" onclick="onClearButtonClick()"> clear </button>
+                </section>
+                
+                
+                
+            </section>
+        </section>
+        
+    
+        
+    </main>
+    
+
+
+
+
+
+
+
+
+    <script src="../js/calculator.js"></script>
+</body>
+</html>
