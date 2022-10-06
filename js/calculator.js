@@ -116,6 +116,7 @@ function calculate(){
 
     if (noError){
         var tempOperatorIndex = 0 ;
+        //calculate multiply and divide operations
         while ( inputArray.includes("*") || inputArray.includes("/") ){
             let multIndex = inputArray.indexOf("*") ;
             let divIndex = inputArray.indexOf("/") ;
@@ -152,7 +153,7 @@ function calculate(){
 
 
         }
-
+        //calculate add and minus operations
         while ( inputArray.includes("+") || inputArray.includes("-")){
             let addIndex = inputArray.indexOf("+") ;
             let minusIndex = inputArray.indexOf("-") ;
